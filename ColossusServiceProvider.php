@@ -1,4 +1,6 @@
-<?php namespace Edreamz\Ecommcore;
+<?php
+
+namespace Magnetion\Colossus;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\Scheduling\Schedule;
@@ -8,7 +10,7 @@ class ColossusServiceProvider extends ServiceProvider {
     protected $defer = false;
 
     protected $commands = [
-
+        'Magnetion\Colossus\Console\Commands\ImportWordPress',
     ];
 
     public function boot()
