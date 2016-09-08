@@ -3,6 +3,7 @@
 namespace Magnetion\Colossus\Console\Commands;
 
 use Illuminate\Console\Command;
+use Magnetion\Colossus\DynamicDB;
 
 class ImportWordPress extends Command
 {
@@ -38,5 +39,23 @@ class ImportWordPress extends Command
     public function handle()
     {
         $this->info('Started');
+
+        $dbHost = $this->ask('Database Hostname?');
+        $dbUsername = $this->ask('Database Username?');
+        $dbPassword = $this->ask('Database Password?');
+        $dbDatabase = $this->ask('Database?');
+
+        $dbInfo = [
+            'driver' => 'mysql',
+            'host' => $dbHost,
+            'port' => '3306',
+            'database' => $dbDatabase,
+            'username' => $dbUsername,
+            'password' => $dbPassword
+        ];
+
+        $otf = new DynamicDB($dbInfo);
+        $wp_posts = $otf->getTable('wp_posts');
+        dd($wp_posts->get());
     }
 }
