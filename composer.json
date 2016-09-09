@@ -9,8 +9,7 @@
       "src/Database/Migrations"
     ],
     "psr-4": {
-      "Magnetion\\Colossus\\": "src/",
-      "Models\\": "src/Models/"
+      "Magnetion\\Colossus\\": "src/"
     }
   }
 }

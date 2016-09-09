@@ -22,6 +22,7 @@ class ColossusServiceProvider extends ServiceProvider {
     public function register()
     {
         $this->commands($this->commands);
+        $this->loadMigrationsFrom(base_path('vendor/magnetion/colossus/src/Database/Migrations'));
     }
 
 }

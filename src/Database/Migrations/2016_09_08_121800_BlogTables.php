@@ -41,6 +41,7 @@ class BlogTables extends Migration
             $table->text('content');
             $table->integer('approved')->default(0);
             $table->integer('parent_id')->nullable();
+            $table->integer('comment_date');
             $table->string('external_id', 100)->nullable();
             $table->timestamps();
         });
@@ -52,6 +53,8 @@ class BlogTables extends Migration
             $table->string('name', 100);
             $table->string('slug', 255);
             $table->string('type', 50);
+            $table->integer('parent')->default(0);
+            $table->integer('count')->default(0);
             $table->string('external_id', 100)->nullable();
             $table->timestamps();
         });
@@ -62,6 +65,20 @@ class BlogTables extends Migration
             $table->increments('id');
             $table->integer('post_id');
             $table->integer('metadata_id');
+            $table->timestamps();
+        });
+
+
+        Schema::create('blog_author', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->string('first_name', 50)->nullable();
+            $table->string('last_name', 50)->nullable();
+            $table->string('email', 75)->nullable();
+            $table->string('display_name', 100)->nullable();
+            $table->string('website', 75)->nullable();
+            $table->integer('status');
+            $table->string('external_id', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -77,5 +94,6 @@ class BlogTables extends Migration
         Schema::drop('blog_comment');
         Schema::drop('blog_metadata');
         Schema::drop('blog_taxonomy');
+        Schema::drop('blog_author');
     }
 }
