@@ -2,6 +2,8 @@
 
 namespace Magnetion\Colossus;
 
+use View;
+
 class FrontController extends \Illuminate\Routing\Controller
 {
 
@@ -14,8 +16,8 @@ class FrontController extends \Illuminate\Routing\Controller
     public function buildHomepage()
     {
         $posts = \Magnetion\Colossus\Models\Post::where('status', 1)->orderBy('publish_date', 'desc')->paginate(10);
-dd($posts);
-        return view('home');
+
+        return View::make('home', compact('posts'));
     }
 
 }
