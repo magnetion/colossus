@@ -16,6 +16,7 @@ class ColossusServiceProvider extends ServiceProvider {
     public function boot()
     {
         $app = $this->app;
+        include __DIR__.'/Routes/routes.php';
     }
 
 

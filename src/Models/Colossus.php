@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     protected $table = 'blog_author';
+
+    public function post()
+    {
+        return $this->belongsTo('\Magnetion\Colossus\Models\Post');
+    }
 }
 
 
@@ -26,6 +31,11 @@ class MetaData extends Model
 class Post extends Model
 {
     protected $table = 'blog_post';
+
+    public function author()
+    {
+        return $this->hasOne('\Magnetion\Colossus\Models\Author', 'id', 'author_id');
+    }
 }
 
 
