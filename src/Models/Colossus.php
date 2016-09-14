@@ -43,6 +43,11 @@ class Post extends Model
             ->where('type', 'category')
             ->select('post_id', 'blog_metadata.name', 'blog_metadata.slug', 'blog_metadata.type', 'blog_metadata.count');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('\Magnetion\Colossus\Models\Comment', 'post_id', 'id');
+    }
 }
 
 

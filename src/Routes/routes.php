@@ -2,6 +2,4 @@
 
 Route::get('/', '\Magnetion\Colossus\FrontController@buildHomepage');
 
-Route::get('{slug}', function($slug) {
-
-})->where('slug', '^.*');
+Route::get('{slug}', '\Magnetion\Colossus\FrontController@buildPage')->where('slug', '^.*');
