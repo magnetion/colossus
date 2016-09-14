@@ -4,7 +4,6 @@ namespace Magnetion\Colossus\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class Author extends Model
 {
     protected $table = 'blog_author';
@@ -35,6 +34,14 @@ class Post extends Model
     public function author()
     {
         return $this->hasOne('\Magnetion\Colossus\Models\Author', 'id', 'author_id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany('\Magnetion\Colossus\Models\Taxonomy', 'post_id', 'id')
+            ->join('blog_metadata', 'blog_metadata.id', '=', 'metadata_id')
+            ->where('type', 'category')
+            ->select('post_id', 'blog_metadata.name', 'blog_metadata.slug', 'blog_metadata.type', 'blog_metadata.count');
     }
 }
 
