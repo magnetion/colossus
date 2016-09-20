@@ -44,6 +44,14 @@ class Post extends Model
             ->select('post_id', 'blog_metadata.name', 'blog_metadata.slug', 'blog_metadata.type', 'blog_metadata.count');
     }
 
+    public function tags()
+    {
+        return $this->hasMany('\Magnetion\Colossus\Models\Taxonomy', 'post_id', 'id')
+            ->join('blog_metadata', 'blog_metadata.id', '=', 'metadata_id')
+            ->where('type', 'tag')
+            ->select('post_id', 'blog_metadata.name', 'blog_metadata.slug', 'blog_metadata.type', 'blog_metadata.count');
+    }
+
     public function comments()
     {
         return $this->hasMany('\Magnetion\Colossus\Models\Comment', 'post_id', 'id');

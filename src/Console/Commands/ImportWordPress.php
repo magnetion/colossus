@@ -146,7 +146,7 @@ class ImportWordPress extends Command
                 'summary' => $post->post_excerpt,
                 'status' => $postStatus,
                 'comments_enabled' => $commentStatus,
-                'comments_count' => 0,
+                'comment_count' => 0,
                 'post_type' => $post->post_type,
                 'external_id' => $post->ID
             ];

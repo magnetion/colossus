@@ -24,7 +24,7 @@ class BlogTables extends Migration
             $table->text('summary')->nullable();
             $table->integer('status');
             $table->integer('comments_enabled')->default(0);
-            $table->integer('comments_count')->default(0);
+            $table->integer('comment_count')->default(0);
             $table->string('post_type', 20);
             $table->string('external_id', 100)->nullable();
             $table->timestamps();
