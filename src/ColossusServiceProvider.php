@@ -17,6 +17,9 @@ class ColossusServiceProvider extends ServiceProvider {
     {
         $app = $this->app;
         include __DIR__.'/Routes/routes.php';
+
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Gravatar', 'Thomaswelton\LaravelGravatar\Facades\Gravatar');
     }
 
 
@@ -24,6 +27,8 @@ class ColossusServiceProvider extends ServiceProvider {
     {
         $this->commands($this->commands);
         $this->loadMigrationsFrom(base_path('vendor/magnetion/colossus/src/Database/Migrations'));
+
+        $this->app->register('Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider');
     }
 
 }
