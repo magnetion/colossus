@@ -37,8 +37,6 @@ class FrontController extends \Illuminate\Routing\Controller
 
     public function buildPost($post)
     {
-
-
         return View::make('post', compact('post'));
     }
 
