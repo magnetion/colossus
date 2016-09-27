@@ -78,6 +78,7 @@ class BlogTables extends Migration
             $table->string('display_name', 100)->nullable();
             $table->string('website', 75)->nullable();
             $table->integer('status');
+            $table->string('hash', 255);
             $table->string('external_id', 100)->nullable();
             $table->timestamps();
         });
